@@ -328,6 +328,7 @@ message ReadMemoryResponse {
 message WriteMemoryRequest {
     uint64 address = 1;
     bytes data = 2;
+    bool is_path = 3;
 }
 
 message GetRootHashResponse {

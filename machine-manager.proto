@@ -88,6 +88,7 @@ message SessionWriteMemoryRequest {
     string session_id = 1;
     uint64 cycle = 2;
     CartesiMachine.WriteMemoryRequest position = 3;
+    bool dataIsPath = 4;
 }
 
 message SessionGetProofRequest {
