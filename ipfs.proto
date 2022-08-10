@@ -18,6 +18,9 @@ package CartesiIpfs;
 service Ipfs {
     rpc GetFile (GetFileRequest) returns (GetFileResponse) {}
     rpc AddFile (AddFileRequest) returns (AddFileResponse) {}
+    // CacheMerkleRootHash caches value of merkle root hash for given ipfs_path and log_2_size.
+    // GetFile will use cached merkle root hash instead of computing it.
+    rpc CacheMerkleRootHash(CacheMerkleRootHashRequest) returns (CacheMerkleRootHashResponse) {}
 }
 
 message GetFileRequest {
@@ -62,3 +65,11 @@ message AddFileResponse {
 message Hash {
     bytes data = 1;
 }
+
+message CacheMerkleRootHashRequest {
+    string ipfs_path = 1;
+    uint32 log2_size = 2;
+    Hash merkle_root_hash = 3;
+}
+
+message CacheMerkleRootHashResponse {}
